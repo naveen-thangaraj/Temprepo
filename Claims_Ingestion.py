@@ -1,34 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec 26 13:24:51 2023
-@author: Naveen Thangaraj
+Created on Tue Jan 23 15:31:16 2024
+
+@author: naveen
 """
 
-# Package import
+# Module Imports
+import mariadb
+import sys
 
-import pandas as pd
-import boto3
-import mysql.connector
-
-
-# Set the connection details
-connection_config = {
-    'user': 'root',
-    'password': 'Sunshine@321#',
-    'host': '10.107.48.42',
-    'database': 'cholams',
-    'port': '3306'
-}
-
-# Establish a connection to the database
-connection = mysql.connector.connect(**connection_config)
-
+# Connect to MariaDB Platform
 try:
-    # Check the connection status
-    #if connection_string:
-    if connection.is_connected():
-        print("Connection successfully established")
-    else:
-        print('Connection to the host failed')
-except Exception as e:
-    print(e)
+    conn = mariadb.connect(
+        user="root",
+        password="Sunshine@321#",
+        host="10.107.48.42",
+        port=3306,
+        database="cholams"
+
+    )
+except mariadb.Error as e:
+    print(f"Error connecting to MariaDB Platform: {e}")
+    sys.exit(1)
+
+if conn:
+    print('Connection successfully establish')
+else:
+    print('Connection has been failed')
+
