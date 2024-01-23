@@ -13,7 +13,7 @@ import mysql.connector
 
 # Set the connection details
 connection_config = {
-    'user': 'cholams',
+    'user': 'root',
     'password': 'Sunshine@321#',
     'host': '10.107.48.42',
     'database': 'cholams',
@@ -23,11 +23,12 @@ connection_config = {
 # Establish a connection to the database
 connection = mysql.connector.connect(**connection_config)
 
-# Check the connection status
-#if connection_string:
-if connection.is_connected():
-    
-    print("Connection successfully established")
-    
-else:
-    print('Connection to the host failed')
+try:
+    # Check the connection status
+    #if connection_string:
+    if connection.is_connected():
+        print("Connection successfully established")
+    else:
+        print('Connection to the host failed')
+except Exception as e:
+    print(e)
