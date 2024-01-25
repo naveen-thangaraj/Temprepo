@@ -80,7 +80,7 @@ try:
         
         # Close cursor and communication with the database
         cur.close()
-        connection_string.close()
+        connection.close()
      else:
         print('Connection host failed')
 except Exception as e:
