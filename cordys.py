@@ -1,18 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 25 14:14:38 2024
+import oracledb
 
-@author: naveen
-"""
+connection = oracledb.connect(user="ins", password="ins610",
+                              dsn=" 10.105.24.18:1521/orclpdb")
 
-# importing module
-import cx_Oracle
-
-
-con = cx_Oracle.connect('ins/ins610@10.107.62.18:1521')
-
-if con:
-    print("Connection establish successfully")
+if connection:
+    print('connection sucessfull')
 else:
-    print("Connection not working")
-
+    print('connection not working')
