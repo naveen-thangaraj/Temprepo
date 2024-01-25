@@ -33,8 +33,7 @@ try:
         cur.execute("""select  cc.claim_number, cc.trigger_type, cc.claim_type 
                        from cholams.claim CC Join cholams.model_meter  MM on 
                        cc.claim_number=mm.claim_number 
-                       where mm.created_date >= convert('2023-09-01 00:00:00.000', datetime));
-                    """)
+                       where mm.created_date >= convert('2023-09-01 00:00:00.000', datetime)""")
         claim_data = cur.fetchall()
         claim_data_col = [i[0] for i in cur.description]
         
@@ -54,8 +53,7 @@ try:
                CO.intermediary_mapping_values, 
                CO.final_risk_grade_vf  
                from  cholams.claim_output CO JOIN cholams.model_meter MM ON CO. claim_number=MM. claim_number 
-               where MM.created_date >= convert('2023-09-01 00:00:00.000', datetime)
-               """)
+               where MM.created_date >= convert('2023-09-01 00:00:00.000', datetime)""")
         claim_output = cur.fetchall()
         claim_output_col = [i[0] for i in cur.description]
         
@@ -66,7 +64,7 @@ try:
         
         # Getting data from model_meter table
         cur.execute("""select claim_number, api_return_code , created_date from cholams.model_meter 
-                       where created_date >= convert('2023-09-01 00:00:00.000', datetime) """)
+                       where created_date >= convert('2023-09-01 00:00:00.000', datetime)""")
         
         model_meter = cur.fetchall()
         model_meter_col = [i[0] for i in cur.description]
