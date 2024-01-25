@@ -31,7 +31,7 @@ try:
         
         # Getting data from claim_data table
         cur.execute("""select  cc.claim_number, cc.trigger_type, cc.claim_type 
-                       from cholams.claim CC Join cholams.model_meter  MM on 
+                       from cholams.claim cc Join cholams.model_meter mm on 
                        cc.claim_number=mm.claim_number 
                        where mm.created_date >= convert('2023-09-01 00:00:00.000', datetime)""")
         claim_data = cur.fetchall()
@@ -52,7 +52,7 @@ try:
                CO.hospital_state_name, 
                CO.intermediary_mapping_values, 
                CO.final_risk_grade_vf  
-               from  cholams.claim_output CO JOIN cholams.model_meter MM ON CO. claim_number=MM. claim_number 
+               from  cholams.claim_output CO JOIN cholams.model_meter MM ON CO.claim_number=MM.claim_number 
                where MM.created_date >= convert('2023-09-01 00:00:00.000', datetime)""")
         claim_output = cur.fetchall()
         claim_output_col = [i[0] for i in cur.description]
